@@ -5,6 +5,7 @@ namespace App\ChessRules;
 
 use App\Contracts\BoardPositionInterface;
 use App\Contracts\ChessPieceInterface;
+use App\Contracts\ChessRulesInterface;
 use App\Services\Board;
 use App\Services\King;
 
@@ -14,7 +15,7 @@ use App\Services\King;
  * Class KingMovesRule
  * @package App\ChessRules
  */
-class KingMovesRule implements \App\Contracts\ChessRulesInterface
+class IsValidKingMoveRule implements ChessRulesInterface
 {
     public function isValidMove(
         Board $board,

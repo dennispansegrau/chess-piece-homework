@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\ChessRules\KingMovesRule;
+use App\ChessRules\IsValidKingMoveRule;
+use App\ChessRules\IsValidQueenMoveRule;
+use App\ChessRules\IsValidRookMoveRule;
 use App\Contracts\ChessPieceInterface;
 use App\ChessRules\NotSameFieldRule;
 
@@ -11,7 +13,9 @@ class RulesValidator
 {
     private const ENABLED_RULES = [
         NotSameFieldRule::class,
-        KingMovesRule::class,
+        IsValidKingMoveRule::class,
+        IsValidQueenMoveRule::class,
+        IsValidRookMoveRule::class,
     ];
 
     private array $rules;

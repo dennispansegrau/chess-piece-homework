@@ -5,6 +5,7 @@ namespace App\Services;
 
 use App\Contracts\BoardPositionInterface;
 use InvalidArgumentException;
+use JetBrains\PhpStorm\Pure;
 
 class BoardPosition implements BoardPositionInterface
 {
@@ -37,6 +38,11 @@ class BoardPosition implements BoardPositionInterface
         return $this->column;
     }
 
+    public function getColumnAsInt(): int
+    {
+        return ord($this->column) - 96;
+    }
+
     public static function createFromString(string $input): self
     {
         if (strlen($input) < 2 || !ctype_alpha($input[0]) || !ctype_digit($input[1])) {
@@ -49,5 +55,21 @@ class BoardPosition implements BoardPositionInterface
     public function __toString(): string
     {
         return $this->column . (string)$this->row;
+    }
+
+    public function isDiagonally(BoardPositionInterface $otherPosition): bool
+    {
+        return abs($this->getColumnAsInt() - $otherPosition->getColumnAsInt()) ===
+            abs($this->getRow() - $otherPosition->getRow());
+    }
+
+    public function isHorizontally(BoardPositionInterface $otherPosition): bool
+    {
+        return $this->getRow() === $otherPosition->getRow();
+    }
+
+    public function isVertically(BoardPositionInterface $otherPosition): bool
+    {
+        return $this->getColumn() === $otherPosition->getColumn();
     }
 }
