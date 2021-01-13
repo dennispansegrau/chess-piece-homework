@@ -16,7 +16,7 @@ All parameters are optional. Without an input a random value is chosen.
 <chess_piece> input must be **K**ing, **Q**ueen, **R**ook, **B**ishop, K**N**ight or **P**awn  
 <chess_piece_color> input must be **w**hite or **b**lack  
 
-###Example commands
+### Example commands
 ```
 php bin/console chess a2 P w  
 php bin/console chess e5 Q b  
