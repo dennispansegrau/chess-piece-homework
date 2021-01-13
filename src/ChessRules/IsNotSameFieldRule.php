@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace App\ChessRules;
 
+use App\Contracts\BoardInterface;
 use App\Contracts\BoardPositionInterface;
 use App\Contracts\ChessPieceInterface;
 use App\Contracts\ChessRulesInterface;
-use App\Services\Board;
 
 /**
  * Valid that the chess piece was moved.
@@ -17,16 +17,11 @@ use App\Services\Board;
 class IsNotSameFieldRule implements ChessRulesInterface
 {
     public function isValidMove(
-        Board $board,
+        BoardInterface $board,
         ChessPieceInterface $chessPiece,
         BoardPositionInterface $currentBoardPosition,
         BoardPositionInterface $possibleNewBoardPosition
-    ): bool
-    {
-        if ($currentBoardPosition == $possibleNewBoardPosition) {
-            return false;
-        }
-
-        return true;
+    ): bool {
+        return $currentBoardPosition != $possibleNewBoardPosition;
     }
 }

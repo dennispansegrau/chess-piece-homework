@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace App\ChessRules;
 
+use App\Contracts\BoardInterface;
 use App\Contracts\BoardPositionInterface;
 use App\Contracts\ChessPieceInterface;
 use App\Contracts\ChessRulesInterface;
-use App\Services\Board;
 use App\Services\King;
 
 /**
@@ -18,7 +18,7 @@ use App\Services\King;
 class IsValidKingMoveRule implements ChessRulesInterface
 {
     public function isValidMove(
-        Board $board,
+        BoardInterface $board,
         ChessPieceInterface $chessPiece,
         BoardPositionInterface $currentBoardPosition,
         BoardPositionInterface $possibleNewBoardPosition

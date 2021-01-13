@@ -5,7 +5,6 @@ namespace App\Services;
 
 use App\Contracts\BoardPositionInterface;
 use InvalidArgumentException;
-use JetBrains\PhpStorm\Pure;
 
 class BoardPosition implements BoardPositionInterface
 {

@@ -3,11 +3,12 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Contracts\BoardInterface;
 use App\Contracts\ChessPieceInterface;
 use App\Contracts\BoardPositionInterface;
 use InvalidArgumentException;
 
-class Board
+class Board implements BoardInterface
 {
     private array $fields;
 
@@ -36,7 +37,7 @@ class Board
         $this->fields[$column][$row] = $chessPiece;
     }
 
-    public function getPosition(ChessPieceInterface $chessPiece): ?BoardPosition
+    public function getPosition(ChessPieceInterface $chessPiece): ?BoardPositionInterface
     {
         for ($column = 'a'; $column <= 'h'; $column++) {
             for ($row = 1; $row <= 8; $row++) {
