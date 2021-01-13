@@ -3,38 +3,38 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
-use App\ChessRules\IsNotSameFieldRule;
+use App\ChessRules\IsValidQueenMoveRule;
 use App\Services\Board;
 use App\Services\BoardPosition;
 use App\Services\ChessPiece;
-use App\Services\King;
+use App\Services\Queen;
 use PHPUnit\Framework\TestCase;
 
-class IsNotSameFieldRuleTest extends TestCase
+class IsValidQueenMoveRuleTest extends TestCase
 {
-    public function testIsValidMoveExpectsFalseWhenSamePositions(): void
+    public function testIsValidMoveExpectsFalseWhenNotAllowedMove(): void
     {
         $board = new Board();
-        $chessPiece = new King(ChessPiece::WHITE);
-        $currentBoardPosition = new BoardPosition('a', 1);
+        $chessPiece = new Queen(ChessPiece::WHITE);
+        $currentBoardPosition = new BoardPosition('a', 2);
         $board->addChessPiece($chessPiece, $currentBoardPosition);
-        $newBoardPosition = new BoardPosition('a', 1);
+        $newBoardPosition = new BoardPosition('b', 5);
 
-        $rule = new IsNotSameFieldRule();
+        $rule = new IsValidQueenMoveRule();
         $isValidMove = $rule->isValidMove($board, $chessPiece, $currentBoardPosition, $newBoardPosition);
 
         $this->assertFalse($isValidMove);
     }
 
-    public function testIsValidMoveExpectsTrueWhenPositionsAreDifferent(): void
+    public function testIsValidMoveExpectsTrueWhenAllowedMove(): void
     {
         $board = new Board();
-        $chessPiece = new King(ChessPiece::WHITE);
+        $chessPiece = new Queen(ChessPiece::WHITE);
         $currentBoardPosition = new BoardPosition('a', 1);
         $board->addChessPiece($chessPiece, $currentBoardPosition);
-        $newBoardPosition = new BoardPosition('a', 2);
+        $newBoardPosition = new BoardPosition('c', 3);
 
-        $rule = new IsNotSameFieldRule();
+        $rule = new IsValidQueenMoveRule();
         $isValidMove = $rule->isValidMove($board, $chessPiece, $currentBoardPosition, $newBoardPosition);
 
         $this->assertTrue($isValidMove);
