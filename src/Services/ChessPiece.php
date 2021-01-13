@@ -20,7 +20,7 @@ abstract class ChessPiece implements ChessPieceInterface
     public function __construct(string $color)
     {
         $color = strtolower($color);
-        if ($color !== 'w' && $color !== 'b') {
+        if ($color !== self::WHITE && $color !== self::BLACK) {
             throw new InvalidArgumentException("$color is not a valid color!");
         }
         $this->color = $color;
