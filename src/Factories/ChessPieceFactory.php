@@ -12,8 +12,17 @@ use App\Services\Queen;
 use App\Services\Rook;
 use \InvalidArgumentException;
 
+/**
+ * Class ChessPieceFactory
+ * @package App\Factories
+ */
 class ChessPieceFactory
 {
+    /**
+     * @param string $name
+     * @param string $chessPieceColorInput
+     * @return ChessPieceInterface
+     */
     public static function createChessPiece(string $name, string $chessPieceColorInput): ChessPieceInterface
     {
         switch (strtoupper($name)) {

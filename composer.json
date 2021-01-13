@@ -1,6 +1,6 @@
 {
     "name": "dennispansegrau/chess-homework",
-    "description": "Homework for the PHP Conference 2021",
+    "description": "Homework for the Online PHP Conference 2021",
     "type": "project",
     "license": "MIT",
     "authors": [
@@ -9,6 +9,11 @@
             "email": "dennis@pansegrau.biz"
         }
     ],
+    "config": {
+        "platform": {
+            "php": "8.0"
+        }
+    },
     "require": {
         "symfony/console": "^5.2"
     },

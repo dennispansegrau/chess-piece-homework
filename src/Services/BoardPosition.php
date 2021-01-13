@@ -11,6 +11,11 @@ class BoardPosition implements BoardPositionInterface
     private string $column;
     private int $row;
 
+    /**
+     * BoardPosition constructor.
+     * @param string $column
+     * @param int $row
+     */
     public function __construct(string $column, int $row)
     {
         $column = strtolower($column);
@@ -27,21 +32,35 @@ class BoardPosition implements BoardPositionInterface
         $this->row = $row;
     }
 
+    /**
+     * @return int
+     */
     public function getRow(): int
     {
         return $this->row;
     }
 
+    /**
+     * @return string
+     */
     public function getColumn(): string
     {
         return $this->column;
     }
 
+    /**
+     * Get the columns a to h as 1 to 8
+     * @return int
+     */
     public function getColumnAsInt(): int
     {
         return ord($this->column) - 96;
     }
 
+    /**
+     * @param string $input
+     * @return BoardPosition
+     */
     public static function createFromString(string $input): self
     {
         if (strlen($input) < 2 || !ctype_alpha($input[0]) || !ctype_digit($input[1])) {
@@ -51,22 +70,37 @@ class BoardPosition implements BoardPositionInterface
         return new self($input[0], (int)$input[1]);
     }
 
+    /**
+     * @return string
+     */
     public function __toString(): string
     {
-        return $this->column . (string)$this->row;
+        return $this->column . $this->row;
     }
 
+    /**
+     * @param BoardPositionInterface $otherPosition
+     * @return bool
+     */
     public function isDiagonally(BoardPositionInterface $otherPosition): bool
     {
         return abs($this->getColumnAsInt() - $otherPosition->getColumnAsInt()) ===
             abs($this->getRow() - $otherPosition->getRow());
     }
 
+    /**
+     * @param BoardPositionInterface $otherPosition
+     * @return bool
+     */
     public function isHorizontally(BoardPositionInterface $otherPosition): bool
     {
         return $this->getRow() === $otherPosition->getRow();
     }
 
+    /**
+     * @param BoardPositionInterface $otherPosition
+     * @return bool
+     */
     public function isVertically(BoardPositionInterface $otherPosition): bool
     {
         return $this->getColumn() === $otherPosition->getColumn();

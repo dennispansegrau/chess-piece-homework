@@ -6,6 +6,10 @@ namespace App\Services;
 use App\Contracts\ChessPieceInterface;
 use InvalidArgumentException;
 
+/**
+ * Class ChessPiece
+ * @package App\Services
+ */
 abstract class ChessPiece implements ChessPieceInterface
 {
     public const WHITE = 'w';

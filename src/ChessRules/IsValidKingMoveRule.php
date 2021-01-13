@@ -17,6 +17,13 @@ use App\Services\King;
  */
 class IsValidKingMoveRule implements ChessRulesInterface
 {
+    /**
+     * @param BoardInterface $board
+     * @param ChessPieceInterface $chessPiece
+     * @param BoardPositionInterface $currentBoardPosition
+     * @param BoardPositionInterface $possibleNewBoardPosition
+     * @return bool
+     */
     public function isValidMove(
         BoardInterface $board,
         ChessPieceInterface $chessPiece,

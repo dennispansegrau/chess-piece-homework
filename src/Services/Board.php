@@ -10,8 +10,12 @@ use InvalidArgumentException;
 
 class Board implements BoardInterface
 {
-    private array $fields;
+    private array $fields = [];
 
+    /**
+     * Board constructor.
+     * @psalm-suppress StringIncrement
+     */
     public function __construct()
     {
         for ($column = 'a'; $column <= 'h'; $column++) {
@@ -21,6 +25,10 @@ class Board implements BoardInterface
         }
     }
 
+    /**
+     * @param ChessPieceInterface $chessPiece
+     * @param BoardPositionInterface $position
+     */
     public function addChessPiece(ChessPieceInterface $chessPiece, BoardPositionInterface $position): void
     {
         $column = $position->getColumn();
@@ -37,6 +45,11 @@ class Board implements BoardInterface
         $this->fields[$column][$row] = $chessPiece;
     }
 
+    /**
+     * @param ChessPieceInterface $chessPiece
+     * @return BoardPositionInterface|null
+     * @psalm-suppress StringIncrement
+     */
     public function getPosition(ChessPieceInterface $chessPiece): ?BoardPositionInterface
     {
         for ($column = 'a'; $column <= 'h'; $column++) {

@@ -15,6 +15,11 @@ use App\Contracts\ChessPieceInterface;
 use App\ChessRules\IsNotSameFieldRule;
 use App\Contracts\ChessRulesInterface;
 
+/**
+ * Checks if the move is valid.
+ * Class RulesValidator
+ * @package App\Services
+ */
 class RulesValidator implements ChessRulesInterface
 {
     private const ENABLED_RULES = [
@@ -29,13 +34,24 @@ class RulesValidator implements ChessRulesInterface
 
     private array $rules;
 
+    /**
+     * RulesValidator constructor.
+     */
     public function __construct()
     {
+        $this->rules = [];
         foreach (self::ENABLED_RULES as $rule) {
             $this->rules[] = new $rule();
         }
     }
 
+    /**
+     * @param BoardInterface $board
+     * @param ChessPieceInterface $chessPiece
+     * @param BoardPositionInterface $currentBoardPosition
+     * @param BoardPositionInterface $possibleNewBoardPosition
+     * @return bool
+     */
     public function isValidMove(
         BoardInterface $board,
         ChessPieceInterface $chessPiece,

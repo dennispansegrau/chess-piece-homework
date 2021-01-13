@@ -16,12 +16,20 @@ use App\Contracts\ChessRulesInterface;
  */
 class IsNotSameFieldRule implements ChessRulesInterface
 {
+    /**
+     * @param BoardInterface $board
+     * @param ChessPieceInterface $chessPiece
+     * @param BoardPositionInterface $currentBoardPosition
+     * @param BoardPositionInterface $possibleNewBoardPosition
+     * @return bool
+     */
     public function isValidMove(
         BoardInterface $board,
         ChessPieceInterface $chessPiece,
         BoardPositionInterface $currentBoardPosition,
         BoardPositionInterface $possibleNewBoardPosition
     ): bool {
-        return $currentBoardPosition != $possibleNewBoardPosition;
+        return $currentBoardPosition->getRow() !== $possibleNewBoardPosition->getRow() ||
+            $currentBoardPosition->getColumn() !== $possibleNewBoardPosition->getColumn();
     }
 }
