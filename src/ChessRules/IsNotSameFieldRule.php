@@ -14,7 +14,7 @@ use App\Services\Board;
  * Class SameFieldRule
  * @package App\ChessRules
  */
-class NotSameFieldRule implements ChessRulesInterface
+class IsNotSameFieldRule implements ChessRulesInterface
 {
     public function isValidMove(
         Board $board,

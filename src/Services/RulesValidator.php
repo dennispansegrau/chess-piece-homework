@@ -6,20 +6,22 @@ namespace App\Services;
 use App\ChessRules\IsValidBishopMoveRule;
 use App\ChessRules\IsValidKingMoveRule;
 use App\ChessRules\IsValidKnightMoveRule;
+use App\ChessRules\IsValidPawnsMoveRule;
 use App\ChessRules\IsValidQueenMoveRule;
 use App\ChessRules\IsValidRookMoveRule;
 use App\Contracts\ChessPieceInterface;
-use App\ChessRules\NotSameFieldRule;
+use App\ChessRules\IsNotSameFieldRule;
 
 class RulesValidator
 {
     private const ENABLED_RULES = [
-        NotSameFieldRule::class,
+        IsNotSameFieldRule::class,
         IsValidKingMoveRule::class,
         IsValidQueenMoveRule::class,
         IsValidRookMoveRule::class,
         IsValidBishopMoveRule::class,
         IsValidKnightMoveRule::class,
+        IsValidPawnsMoveRule::class,
     ];
 
     private array $rules;
