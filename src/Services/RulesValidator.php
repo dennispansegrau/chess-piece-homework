@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\ChessRules\IsValidBishopMoveRule;
 use App\ChessRules\IsValidKingMoveRule;
+use App\ChessRules\IsValidKnightMoveRule;
 use App\ChessRules\IsValidQueenMoveRule;
 use App\ChessRules\IsValidRookMoveRule;
 use App\Contracts\ChessPieceInterface;
@@ -16,6 +18,8 @@ class RulesValidator
         IsValidKingMoveRule::class,
         IsValidQueenMoveRule::class,
         IsValidRookMoveRule::class,
+        IsValidBishopMoveRule::class,
+        IsValidKnightMoveRule::class,
     ];
 
     private array $rules;
