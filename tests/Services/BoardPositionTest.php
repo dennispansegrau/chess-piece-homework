@@ -62,7 +62,7 @@ class BoardPositionTest extends TestCase
         $this->assertSame('h8', (string)$boardPosition);
     }
 
-    public function testIsDiagonally()
+    public function testIsDiagonally(): void
     {
         $boardPosition1 = new BoardPosition('a', 1);
         $boardPosition2 = new BoardPosition('b', 2);
@@ -84,7 +84,7 @@ class BoardPositionTest extends TestCase
         $this->assertFalse($boardPosition1->isDiagonally($boardPosition2));
     }
 
-    public function testIsHorizontally()
+    public function testIsHorizontally(): void
     {
         $boardPosition1 = new BoardPosition('a', 1);
         $boardPosition2 = new BoardPosition('h', 1);
@@ -106,7 +106,7 @@ class BoardPositionTest extends TestCase
         $this->assertFalse($boardPosition1->isHorizontally($boardPosition2));
     }
 
-    public function testIsVertically()
+    public function testIsVertically(): void
     {
         $boardPosition1 = new BoardPosition('a', 1);
         $boardPosition2 = new BoardPosition('a', 5);

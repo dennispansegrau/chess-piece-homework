@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class BoardTest extends TestCase
 {
-    public function testAddChessPiece()
+    public function testAddChessPiece(): void
     {
         $chessPiece = new King(King::WHITE);
         $boardPosition = new BoardPosition('a', 1);
@@ -25,7 +25,7 @@ class BoardTest extends TestCase
         $this->assertSame($boardPosition->getColumn(), $position->getColumn());
     }
 
-    public function testGetPosition()
+    public function testGetPosition(): void
     {
         $chessPiece = new King(King::WHITE);
         $board = new Board();

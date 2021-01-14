@@ -7,8 +7,6 @@ use App\Command\ChessCommand;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionException;
-use Symfony\Component\Console\Input\Input;
-use Symfony\Component\Console\Output\Output;
 
 class ChessCommandTest extends TestCase
 {
@@ -45,13 +43,13 @@ class ChessCommandTest extends TestCase
     }
 
     /**
-     * @param $object
-     * @param $methodName
+     * @param object $object
+     * @param string $methodName
      * @param array $parameters
      * @return mixed
      * @throws ReflectionException
      */
-    private function invokeMethod(&$object, $methodName, array $parameters = array()): mixed
+    private function invokeMethod(object $object, string $methodName, array $parameters = array()): mixed
     {
         $reflection = new ReflectionClass(get_class($object));
         $method = $reflection->getMethod($methodName);
