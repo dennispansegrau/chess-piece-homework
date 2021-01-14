@@ -9,5 +9,8 @@ namespace App\Services;
  */
 class Bishop extends ChessPiece
 {
-
+    public function __toString(): string
+    {
+        return 'Bishop';
+    }
 }

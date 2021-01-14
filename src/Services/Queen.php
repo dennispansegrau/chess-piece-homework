@@ -9,5 +9,8 @@ namespace App\Services;
  */
 class Queen extends ChessPiece
 {
-
+    public function __toString(): string
+    {
+        return 'Queen';
+    }
 }

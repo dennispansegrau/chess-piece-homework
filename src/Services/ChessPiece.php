@@ -37,4 +37,6 @@ abstract class ChessPiece implements ChessPieceInterface
     {
         return $this->color;
     }
+
+    abstract public function __toString(): string;
 }
