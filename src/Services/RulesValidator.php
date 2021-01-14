@@ -32,6 +32,9 @@ class RulesValidator implements ChessRulesInterface
         IsValidPawnsMoveRule::class,
     ];
 
+    /**
+     * @var array<ChessRulesInterface>
+     */
     private array $rules;
 
     /**

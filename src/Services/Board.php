@@ -10,7 +10,10 @@ use InvalidArgumentException;
 
 class Board implements BoardInterface
 {
-    private array $fields = [];
+    /**
+     * @var array<string, array<null|ChessPieceInterface>>
+     */
+    private array $fields;
 
     /**
      * Board constructor.
@@ -18,6 +21,8 @@ class Board implements BoardInterface
      */
     public function __construct()
     {
+        $this->fields = [];
+
         for ($column = 'a'; $column <= 'h'; $column++) {
             for ($row = 1; $row <= 8; $row++) {
                 $this->fields[$column][$row] = null;

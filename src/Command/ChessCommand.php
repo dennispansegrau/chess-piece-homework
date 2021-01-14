@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use App\Contracts\BoardPositionInterface;
+use App\Contracts\ChessPieceInterface;
 use App\Factories\ChessPieceFactory;
 use App\Services\Board;
 use App\Services\BoardPosition;
@@ -76,7 +78,8 @@ class ChessCommand extends Command
         $output->writeln('Possible moves:');
         $allPossibleMoves = $this->getAllPossibleMoves($chessPieceInput, $chessPieceColorInput, $boardPositionInput);
         foreach ($allPossibleMoves as $move) {
-            $output->writeln($move);
+            /** @var BoardPosition $move */
+            $output->writeln((string)$move);
         }
 
         return Command::SUCCESS;
@@ -99,7 +102,7 @@ class ChessCommand extends Command
      */
     private function getRandomChessPiece(): string
     {
-        return array_rand(array_flip(['K', 'Q', 'R', 'B', 'N', 'P']));
+        return (string)array_rand(array_flip(['K', 'Q', 'R', 'B', 'N', 'P']));
     }
 
     /**
@@ -107,14 +110,14 @@ class ChessCommand extends Command
      */
     private function getRandomColor(): string
     {
-        return array_rand(array_flip(['b', 'w']));
+        return (string)array_rand(array_flip(['b', 'w']));
     }
 
     /**
      * @param string $chessPieceInput
      * @param string $chessPieceColorInput
      * @param string $boardPositionInput
-     * @return array
+     * @return array<BoardPositionInterface>
      */
     private function getAllPossibleMoves(
         string $chessPieceInput,

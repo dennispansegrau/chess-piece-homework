@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Contracts\BoardInterface;
+use App\Contracts\BoardPositionInterface;
 use App\Contracts\ChessPieceInterface;
 use App\Contracts\ChessRulesInterface;
 use RuntimeException;
@@ -30,7 +31,7 @@ class ChessPieceAnalyser
 
     /**
      * @param ChessPieceInterface $chessPiece
-     * @return array
+     * @return array<BoardPositionInterface>
      * @psalm-suppress StringIncrement
      */
     public function getAllPossibleMoves(ChessPieceInterface $chessPiece): array
