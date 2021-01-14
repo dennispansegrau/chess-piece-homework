@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\ChessRules\IsAlreadyBlockedByOwnChessPiece;
 use App\ChessRules\IsValidBishopMoveRule;
 use App\ChessRules\IsValidKingMoveRule;
 use App\ChessRules\IsValidKnightMoveRule;
@@ -30,6 +31,7 @@ class RulesValidator implements ChessRulesInterface
         IsValidBishopMoveRule::class,
         IsValidKnightMoveRule::class,
         IsValidPawnsMoveRule::class,
+        IsAlreadyBlockedByOwnChessPiece::class,
     ];
 
     /**

@@ -67,4 +67,16 @@ class Board implements BoardInterface
 
         return null;
     }
+
+    /**
+     * @param BoardPositionInterface $boardPosition
+     * @return ChessPieceInterface|null
+     */
+    public function getChessPiece(BoardPositionInterface $boardPosition): ?ChessPieceInterface
+    {
+        $column = $boardPosition->getColumn();
+        $row = $boardPosition->getRow();
+
+        return $this->fields[$column][$row];
+    }
 }

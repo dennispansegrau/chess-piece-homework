@@ -16,4 +16,10 @@ interface BoardInterface
      * @return BoardPositionInterface|null
      */
     public function getPosition(ChessPieceInterface $chessPiece): ?BoardPositionInterface;
+
+    /**
+     * @param BoardPositionInterface $boardPosition
+     * @return ChessPieceInterface|null
+     */
+    public function getChessPiece(BoardPositionInterface $boardPosition): ?ChessPieceInterface;
 }

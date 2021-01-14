@@ -33,4 +33,15 @@ class BoardTest extends TestCase
 
         $this->assertNull($position);
     }
+
+    public function testGetChessPiece(): void
+    {
+        $king = new King(King::WHITE);
+        $board = new Board();
+        $boardPosition = new BoardPosition('f', 5);
+        $board->addChessPiece($king, $boardPosition);
+        $chessPiece = $board->getChessPiece($boardPosition);
+
+        $this->assertSame($king, $chessPiece);
+    }
 }
