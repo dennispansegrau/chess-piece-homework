@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Tests\ChessRules;
 
-use App\ChessRules\IsAlreadyBlockedByOwnChessPiece;
+use App\ChessRules\IsNotBlockedByOwnChessPieceRule;
 use App\Services\Board;
 use App\Services\BoardPosition;
 use App\Services\ChessPiece;
@@ -11,7 +11,7 @@ use App\Services\King;
 use App\Services\Queen;
 use PHPUnit\Framework\TestCase;
 
-class IsAlreadyBlockedByOwnChessPieceTest extends TestCase
+class IsNotBlockedByOwnChessPieceRuleTest extends TestCase
 {
     public function testIsValidMoveExpectsFalseWhenPositionIsOccupiedByOwnChessPiece(): void
     {
@@ -23,7 +23,7 @@ class IsAlreadyBlockedByOwnChessPieceTest extends TestCase
         $board->addChessPiece($king, $kingsBoardPosition);
         $board->addChessPiece($queen, $queensBoardPosition);
 
-        $rule = new IsAlreadyBlockedByOwnChessPiece();
+        $rule = new IsNotBlockedByOwnChessPieceRule();
         $isValidMove = $rule->isValidMove($board, $king, $kingsBoardPosition, $queensBoardPosition);
 
         $this->assertFalse($isValidMove);
@@ -39,7 +39,7 @@ class IsAlreadyBlockedByOwnChessPieceTest extends TestCase
         $board->addChessPiece($king, $kingsBoardPosition);
         $board->addChessPiece($queen, $queensBoardPosition);
 
-        $rule = new IsAlreadyBlockedByOwnChessPiece();
+        $rule = new IsNotBlockedByOwnChessPieceRule();
         $isValidMove = $rule->isValidMove($board, $king, $kingsBoardPosition, $queensBoardPosition);
 
         $this->assertTrue($isValidMove);

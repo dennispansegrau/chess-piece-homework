@@ -8,7 +8,7 @@ use App\Contracts\BoardPositionInterface;
 use App\Contracts\ChessPieceInterface;
 use App\Contracts\ChessRulesInterface;
 
-class IsAlreadyBlockedByOwnChessPiece implements ChessRulesInterface
+class IsNotBlockedByOwnChessPieceRule implements ChessRulesInterface
 {
     /**
      * @param BoardInterface $board
