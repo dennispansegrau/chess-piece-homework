@@ -87,7 +87,7 @@ class IsReachableRule implements ChessRulesInterface
     /**
      * @param BoardPositionInterface $startPosition
      * @param BoardPositionInterface $targetPosition
-     * @return array
+     * @return array<BoardPositionInterface>
      */
     private function getFieldsBetween(
         BoardPositionInterface $startPosition,
@@ -115,7 +115,7 @@ class IsReachableRule implements ChessRulesInterface
     /**
      * @param BoardPositionInterface $startPosition
      * @param BoardPositionInterface $targetPosition
-     * @return array
+     * @return array<BoardPositionInterface>
      * @psalm-suppress StringIncrement
      */
     private function getDiagonallyFieldsBetween(
@@ -139,7 +139,7 @@ class IsReachableRule implements ChessRulesInterface
     /**
      * @param BoardPositionInterface $startPosition
      * @param BoardPositionInterface $targetPosition
-     * @return array
+     * @return array<BoardPositionInterface>
      */
     private function getVerticallyFieldsBetween(
         BoardPositionInterface $startPosition,
@@ -160,21 +160,20 @@ class IsReachableRule implements ChessRulesInterface
     /**
      * @param BoardPositionInterface $startPosition
      * @param BoardPositionInterface $targetPosition
-     * @return array
+     * @return array<BoardPositionInterface>
      */
     private function getHorizontallyFieldsBetween(
         BoardPositionInterface $startPosition,
         BoardPositionInterface $targetPosition
     ): array {
         $row = $startPosition->getRow();
-        /** @var string $minColumn */
-        $minColumn = min($startPosition->getColumn(), $targetPosition->getColumn());
-        /** @var string $maxColumn */
-        $maxColumn = max($startPosition->getColumn(), $targetPosition->getColumn());
+        $minColumn = min(ord($startPosition->getColumn()), ord($targetPosition->getColumn()));
+        $maxColumn = max(ord($startPosition->getColumn()), ord($targetPosition->getColumn()));
 
         $fields = [];
         for ($column = ++$minColumn; $column < $maxColumn; $column++) {
-            $fields[] = new BoardPosition($column, $row);
+            $columnStr = chr($column);
+            $fields[] = new BoardPosition($columnStr, $row);
         }
 
         return $fields;
